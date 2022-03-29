@@ -3,7 +3,7 @@ import { ApiTags, ApiOperation } from "@nestjs/swagger";
 import { AppService } from "./app.service";
 
 // 使用@Controller装饰器来定义控制器, @Get是请求方法的装饰器，对getHello方法进行修饰， 表示这个方法会被GET请求调用。
-@ApiTags("App 接口") // 通过@ApiTags添加标签来对 Controller 进行分类
+@ApiTags("主接口") // 通过@ApiTags添加标签来对 Controller 进行分类
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}

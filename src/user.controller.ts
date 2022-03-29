@@ -22,6 +22,7 @@ export class UserController {
     return "qa";
   }
 
+  @ApiOperation({ summary: "登录接口" })
   @Post("Login")
   Login(@Body() post: LogintDto): boolean {
     return true;
