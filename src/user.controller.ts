@@ -1,12 +1,15 @@
 import { Controller, Get, Post, Body } from "@nestjs/common";
 import { ApiTags, ApiOperation, ApiProperty } from "@nestjs/swagger";
+import { IsNotEmpty, IsString } from "class-validator";
 import { AppService } from "./app.service";
 
 class LogintDto {
   @ApiProperty({ description: "用户名称" })
+  @IsNotEmpty({ message: "文章标题必填" })
   readonly name: string;
 
   @ApiProperty({ description: "密码" })
+  @IsString()
   readonly pwd: string;
 }
 

@@ -1,5 +1,6 @@
 import { NestFactory } from "@nestjs/core";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
+import { ValidationPipe } from "@nestjs/common";
 import { AppModule } from "./app.module";
 
 async function bootstrap() {
@@ -15,6 +16,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup("docs", app, document);
   // 我们就可以访问：http://localhost:3000/docs,此时就能看到Swagger生成的文档
+
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(3000);
 }

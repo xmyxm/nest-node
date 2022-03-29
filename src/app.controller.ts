@@ -6,6 +6,7 @@ import { AppService } from "./app.service";
 @ApiTags("主接口") // 通过@ApiTags添加标签来对 Controller 进行分类
 @Controller()
 export class AppController {
+  // 在 app.controller.ts 中 AppController 声明了一个依赖于 AppService 令牌(token)的构造函数注入:
   constructor(private readonly appService: AppService) {}
 
   // 使用 @ApiOperation 装饰器,给每一个接口添加说明文字， 让使用的人直观的看到每个接口的含义
