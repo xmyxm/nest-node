@@ -1,12 +1,15 @@
 import { Controller, Get, Post } from "@nestjs/common";
+import { ApiTags, ApiOperation } from "@nestjs/swagger";
 import { AppService } from "./app.service";
 
 // 使用@Controller装饰器来定义控制器, @Get是请求方法的装饰器，对getHello方法进行修饰， 表示这个方法会被GET请求调用。
-
+@ApiTags("App 接口") // 通过@ApiTags添加标签来对 Controller 进行分类
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  // 使用 @ApiOperation 装饰器,给每一个接口添加说明文字， 让使用的人直观的看到每个接口的含义
+  @ApiOperation({ summary: "hello 测试接口" })
   @Get("hello")
   getHello(): string {
     // 我们可以看出使用 @Injectable 修饰后的 AppService, 在 AppModule 中注册之后，在 app.controller.ts 中使用，我们就不需要使用 new AppService() 去实例化，直接引入过来就可以用
