@@ -14,4 +14,5 @@ import { AppService } from "./app.service";
 })
 export class AppModule {} // AppModule 是应用程序的根模块，根模块提供了用来启动应用的引导机制，可以包含很多功能模块
 
-// 在 app.module.ts 中，我们将标记 AppService 与 app.Controller.ts文件中的 AppService 类相关联。 我们将在下面确切地看到这种关联（也称为注册）的发生方式
+// 在 app.module.ts 中，我们将标记 AppService 与 app.controller.ts文件中的 AppService 类相关联。 我们将在下面确切地看到这种关联（也称为注册）的发生方式
+// 当 Nest IoC 容器实例化 AppController 时，它首先查找所有依赖项*。 当找到 AppService 依赖项时，它将对 AppService令牌(token)执行查找，并根据上述步骤（上面的＃3）返回 AppService 类。 假定单例范围（默认行为），Nest 然后将创建 AppService 实例，将其缓存并返回，或者如果已经缓存，则返回现有实例
