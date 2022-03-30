@@ -1,6 +1,7 @@
 import { NestFactory } from "@nestjs/core";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import { ValidationPipe } from "@nestjs/common";
+import * as cors from "cors";
 import { AppModule } from "./app.module";
 
 async function bootstrap() {
@@ -17,7 +18,16 @@ async function bootstrap() {
   SwaggerModule.setup("docs", app, document);
   // 我们就可以访问：http://localhost:3000/docs,此时就能看到Swagger生成的文档
 
+  // 参数校验
   app.useGlobalPipes(new ValidationPipe());
+
+  // 跨域
+  app.use(
+    cors({
+      origin: "http://localhost:8080",
+      credentials: true,
+    })
+  );
 
   await app.listen(3000);
 }
